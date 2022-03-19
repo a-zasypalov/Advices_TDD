@@ -5,4 +5,6 @@ import javax.inject.Inject
 
 class GetRandomAdviceUseCase @Inject constructor(private val repository: AdviceRepository) {
 
+    fun getRandomAdvice() = repository.getRandomAdvice()
+
 }
