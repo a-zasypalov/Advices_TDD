@@ -1,16 +1,15 @@
 package com.gaoyun.advices.data.model
 
-import com.squareup.moshi.Json
+import com.gaoyun.advices.domain.model.Advice
+import io.reactivex.rxjava3.core.Single
 
 data class AdviceSlipResponse(
-    @field:Json(name = "slip")
-    val slipResponse: AdviceResponse
+    val slip: AdviceResponse
 )
 
 data class AdviceResponse(
-    @field:Json(name = "slip")
     val id: Long,
-
-    @field:Json(name = "slip")
     val advice: String
 )
+
+fun Single<AdviceResponse>.toSingleAdvice(): Single<Advice> = map { Advice(it.id, it.advice) }

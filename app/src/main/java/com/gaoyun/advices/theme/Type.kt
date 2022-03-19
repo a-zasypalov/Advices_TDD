@@ -1,4 +1,4 @@
-package com.gaoyun.advices.common.theme
+package com.gaoyun.advices.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle

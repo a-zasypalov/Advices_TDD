@@ -6,7 +6,7 @@ import retrofit2.http.GET
 
 interface AdvicesSlipApiClient {
 
-    @GET
+    @GET("/advice")
     fun getRandomAdvice(): Single<AdviceSlipResponse>
 
 }

@@ -1,4 +1,4 @@
-package com.gaoyun.advices.common.theme
+package com.gaoyun.advices.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes

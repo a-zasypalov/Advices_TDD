@@ -3,8 +3,9 @@ package com.gaoyun.advices.data
 import com.gaoyun.advices.data.model.AdviceResponse
 import com.gaoyun.advices.data.model.AdviceSlipResponse
 import com.gaoyun.advices.data.remote.AdvicesSlipApiClient
-import com.gaoyun.advices.data.repository.AdviceRepository
 import com.gaoyun.advices.data.repository.AdviceRepositoryImpl
+import com.gaoyun.advices.domain.model.Advice
+import com.gaoyun.advices.domain.repository.AdviceRepository
 import io.reactivex.rxjava3.core.Single
 import org.junit.Test
 import org.mockito.kotlin.doReturn
@@ -32,12 +33,12 @@ class AdviceRepositoryTest {
     }
 
     @Test
-    fun `getRandomAdvice should return AdviceResponse`() {
+    fun `getRandomAdvice should return Advice`() {
         adviceRepository.getRandomAdvice()
             .test()
             .assertNoErrors()
             .assertComplete()
-            .assertValue(AdviceResponse(1, "Test"))
+            .assertValue(Advice(1, "Test"))
     }
 
 }

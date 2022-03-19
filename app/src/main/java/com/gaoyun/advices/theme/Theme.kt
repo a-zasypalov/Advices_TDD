@@ -1,4 +1,4 @@
-package com.gaoyun.advices.common.theme
+package com.gaoyun.advices.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
