@@ -14,3 +14,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Advices"
 include ':app'
+include ':data'
+include ':common'
