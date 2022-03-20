@@ -2,7 +2,7 @@ package com.gaoyun.advices.domain
 
 import com.gaoyun.advices.domain.model.Advice
 import com.gaoyun.advices.domain.repository.AdviceRepository
-import com.gaoyun.advices.domain.usecase.GetRandomAdviceUseCase
+import com.gaoyun.advices.domain.usecase.GetRandomAdviceUseCaseImpl
 import io.reactivex.rxjava3.core.Single
 import org.junit.Test
 import org.mockito.kotlin.doReturn
@@ -17,7 +17,7 @@ class GetRandomAdviceUseCaseTest {
         } doReturn Single.just(Advice(1, "Test"))
     }
 
-    private val useCase = GetRandomAdviceUseCase(adviceRepository)
+    private val useCase = GetRandomAdviceUseCaseImpl(adviceRepository)
 
     @Test
     fun `getRandomAdvice should call AdviceRepository`() {
