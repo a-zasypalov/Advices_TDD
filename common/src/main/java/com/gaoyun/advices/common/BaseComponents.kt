@@ -8,6 +8,8 @@ import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.subjects.PublishSubject
 
+const val LAUNCH_LISTEN_FOR_EFFECTS = "launch-listen-to-effects"
+
 interface ViewState
 
 interface ViewEvent
