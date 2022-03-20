@@ -1,9 +1,7 @@
 package com.gaoyun.feature_random_advice
 
-import androidx.compose.ui.test.assertIsDisplayed
-import androidx.compose.ui.test.assertTextEquals
+import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createComposeRule
-import androidx.compose.ui.test.onNodeWithTag
 import com.gaoyun.advices.common.theme.AdvicesTheme
 import com.gaoyun.advices.domain.model.Advice
 import io.reactivex.rxjava3.core.Observable
@@ -59,6 +57,38 @@ class GetRandomAdviceScreenTest {
 
         composeTestRule.onNodeWithTag("AdviceText").assertIsDisplayed()
         composeTestRule.onNodeWithTag("AdviceText").assertTextEquals("Test")
+    }
+
+    @Test
+    fun refresh_button_should_be_active_if_advice_loaded() {
+        composeTestRule.setContent {
+            AdvicesTheme {
+                GetRandomAdviceScreen(
+                    state = GetRandomAdviceScreenContract.State(Advice(1, "Test"), false),
+                    effectObservable = Observable.empty(),
+                    onEventSent = {  }
+                )
+            }
+        }
+
+        composeTestRule.onNodeWithTag("RefreshAdviceButton").assertIsEnabled()
+    }
+
+    @Test
+    fun refresh_button_should_send_refresh_event_on_click() {
+        composeTestRule.setContent {
+            AdvicesTheme {
+                GetRandomAdviceScreen(
+                    state = GetRandomAdviceScreenContract.State(Advice(1, "Test"), false),
+                    effectObservable = Observable.empty(),
+                    onEventSent = {
+                        assert(it is GetRandomAdviceScreenContract.Event.GetNewAdvice)
+                    }
+                )
+            }
+        }
+
+        composeTestRule.onNodeWithTag("RefreshAdviceButton").performClick()
     }
 
 }
