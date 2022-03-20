@@ -11,11 +11,18 @@ class GetRandomAdviceViewModel @Inject constructor(
     private val getRandomAdviceUseCase: GetRandomAdviceUseCase
 ) : BaseViewModel<GetRandomAdviceScreenContract.Event, GetRandomAdviceScreenContract.State, GetRandomAdviceScreenContract.Effect>() {
 
+    init {
+        getRandomAdvice()
+    }
+
     override fun setInitialState(): GetRandomAdviceScreenContract.State = GetRandomAdviceScreenContract.State(advice = null, isLoading = true)
 
     override fun handleEvents(event: GetRandomAdviceScreenContract.Event) {
         when (event) {
-            is GetRandomAdviceScreenContract.Event.GetNewAdvice -> getRandomAdvice()
+            is GetRandomAdviceScreenContract.Event.GetNewAdvice -> {
+                setState { copy(isLoading = true) }
+                getRandomAdvice()
+            }
         }
     }
 
