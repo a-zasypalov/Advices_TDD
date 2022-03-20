@@ -21,9 +21,20 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion compose_version
+    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
     }
     kotlinOptions {
         jvmTarget = '1.8'
@@ -41,6 +52,8 @@ dependencies {
     api 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.1'
     api 'androidx.activity:activity-compose:1.4.0'
     api 'androidx.hilt:hilt-navigation-compose:1.0.0'
+
+    api "com.google.dagger:hilt-android:$hilt_version"
 
     api "androidx.compose.ui:ui:$compose_version"
     api "androidx.compose.material:material:$compose_version"
