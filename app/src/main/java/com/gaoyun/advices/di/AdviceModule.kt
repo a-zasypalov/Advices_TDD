@@ -4,6 +4,7 @@ import com.gaoyun.advices.data.remote.AdvicesSlipApiClient
 import com.gaoyun.advices.data.repository.AdviceRepositoryImpl
 import com.gaoyun.advices.domain.repository.AdviceRepository
 import com.gaoyun.advices.domain.usecase.GetRandomAdviceUseCase
+import com.gaoyun.advices.domain.usecase.GetRandomAdviceUseCaseImpl
 import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
@@ -65,6 +66,6 @@ object UseCaseModule {
 
     @ViewModelScoped
     @Provides
-    fun provideGetRandomAdviceUseCase(repository: AdviceRepository): GetRandomAdviceUseCase = GetRandomAdviceUseCase(repository)
+    fun provideGetRandomAdviceUseCase(repository: AdviceRepository): GetRandomAdviceUseCase = GetRandomAdviceUseCaseImpl(repository)
 
 }
