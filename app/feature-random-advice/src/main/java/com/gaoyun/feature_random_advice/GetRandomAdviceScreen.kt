@@ -1,6 +1,8 @@
 package com.gaoyun.feature_random_advice
 
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -13,6 +15,11 @@ import androidx.navigation.NavHostController
 import com.gaoyun.advices.common.LAUNCH_LISTEN_FOR_EFFECTS
 import io.reactivex.rxjava3.core.Observable
 
+/**
+ * Screen destination for showing random advice
+ *
+ * @param navHostController - navigation controller
+ */
 @Composable
 fun GetRandomAdviceScreenDestination(navHostController: NavHostController) {
     val viewModel: GetRandomAdviceViewModel = hiltViewModel()
@@ -25,6 +32,13 @@ fun GetRandomAdviceScreenDestination(navHostController: NavHostController) {
     )
 }
 
+/**
+ * Screen for showing random advice
+ *
+ * @param state - current screen state
+ * @param effectObservable - observable object for incoming effects
+ * @param onEventSent - screen events handler
+ */
 @Composable
 fun GetRandomAdviceScreen(
     state: GetRandomAdviceScreenContract.State,
@@ -59,6 +73,11 @@ fun GetRandomAdviceScreen(
 
 }
 
+/**
+ * Widget for displaying advice text
+ *
+ * @param advice - advice text
+ */
 @Composable
 fun AdviceState(advice: String) {
     Box(
@@ -71,6 +90,12 @@ fun AdviceState(advice: String) {
     }
 }
 
+/**
+ * Widget for refresh random advice button
+ *
+ * @param isLoading - flag showing if new advice currently loading
+ * @param onRefreshClick - handler of the refresh button click
+ */
 @Composable
 fun RefreshAdviceButton(isLoading: Boolean, onRefreshClick: () -> Unit) {
     Box(contentAlignment = Alignment.BottomCenter, modifier = Modifier
@@ -83,6 +108,9 @@ fun RefreshAdviceButton(isLoading: Boolean, onRefreshClick: () -> Unit) {
     }
 }
 
+/**
+ * Advice loader widget
+ */
 @Composable
 fun AdviceLoader() {
     Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()) {

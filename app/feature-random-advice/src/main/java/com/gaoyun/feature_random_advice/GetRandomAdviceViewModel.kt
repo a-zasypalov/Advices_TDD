@@ -15,8 +15,14 @@ class GetRandomAdviceViewModel @Inject constructor(
         getRandomAdvice()
     }
 
+    /**
+     * Sets initial state for GetRandomAdviceScreen
+     */
     override fun setInitialState(): GetRandomAdviceScreenContract.State = GetRandomAdviceScreenContract.State(advice = null, isLoading = true)
 
+    /**
+     * Handles events from GetRandomAdviceScreen
+     */
     override fun handleEvents(event: GetRandomAdviceScreenContract.Event) {
         when (event) {
             is GetRandomAdviceScreenContract.Event.GetNewAdvice -> {
@@ -26,6 +32,9 @@ class GetRandomAdviceViewModel @Inject constructor(
         }
     }
 
+    /**
+     * Retrieves a random advice and sets state if retrieval is successful
+     */
     fun getRandomAdvice() = disposables.add(
         getRandomAdviceUseCase.getRandomAdvice()
             .ioToMain()

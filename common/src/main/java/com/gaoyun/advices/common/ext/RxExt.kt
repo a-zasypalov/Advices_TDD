@@ -4,4 +4,7 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
 
+/**
+ * Extension for subscribing on IO Scheduler and observe on Android MainThread
+ */
 fun <T: Any> Single<T>.ioToMain(): Single<T> = this.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())

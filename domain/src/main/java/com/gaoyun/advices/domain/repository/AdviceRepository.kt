@@ -5,6 +5,11 @@ import io.reactivex.rxjava3.core.Single
 
 interface AdviceRepository {
 
+    /**
+     * Retrieves a random advice
+     *
+     * @return Single advice object
+     */
     fun getRandomAdvice(): Single<Advice>
 
 }
