@@ -33,6 +33,9 @@ class MainActivity : ComponentActivity() {
 
 }
 
+/**
+ * Global navigator state widget
+ */
 @Composable
 fun GlobalDestinationState() {
     val navHostController = rememberNavController()

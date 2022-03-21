@@ -11,6 +11,11 @@ class AdviceRepositoryImpl @Inject constructor(
     private val apiClient: AdvicesSlipApiClient
 ) : AdviceRepository {
 
+    /**
+     * Retrieves a random advice
+     *
+     * @return Single advice object
+     */
     override fun getRandomAdvice(): Single<Advice> = apiClient.getRandomAdvice().map { it.slip }.toSingleAdvice()
 
 }

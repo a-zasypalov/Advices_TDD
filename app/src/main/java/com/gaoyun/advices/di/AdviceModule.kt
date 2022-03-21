@@ -59,13 +59,3 @@ object AdviceModule {
     fun provideAdviceRepository(apiClient: AdvicesSlipApiClient): AdviceRepository = AdviceRepositoryImpl(apiClient)
 
 }
-
-@Module
-@InstallIn(ViewModelComponent::class)
-object UseCaseModule {
-
-    @ViewModelScoped
-    @Provides
-    fun provideGetRandomAdviceUseCase(repository: AdviceRepository): GetRandomAdviceUseCase = GetRandomAdviceUseCaseImpl(repository)
-
-}
